@@ -29,8 +29,11 @@ class Bot():
       ))
 
       if(msg['text'] == 'Cursos'):
-#Abre o arquivo Help.html com o atributo leitura
-        txtHelp = open('Help.html','r')
+#Abre o arquivo Hello.md com o atributo leitura
+        txtHelp = open('Hello.md','r')
+  
+  #Ler arquivos de outras pasta EX.: ComoSerAluno/Vestibular.md
+  
 #Envia mensagem com o conteúdo do arquivo Help.txt
         bot.sendMessage(chatId,txtHelp.read(),'Markdown')
 #Fecha o arquivo
