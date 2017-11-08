@@ -2,4 +2,4 @@ from Bot import Bot
 
 Bot.init()
 
-    #teste
+    #teste no bot na fatec

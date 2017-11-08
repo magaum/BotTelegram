@@ -1,6 +1,14 @@
 import telepot
 import json
+
+from ComoChegar.BtnComoChegar import BtnComoChegar
+
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
+#carregando token do bot
+
+load = open("token.json")
+token = json.loads(load.read())
+
 #carregando token do bot
 
 load = open("token.json")
@@ -10,40 +18,46 @@ token = json.loads(load.read())
 bot = telepot.Bot(token['token'])
 
 class Bot():
-  def init():
-#inicia o programa e deixa em execução
-    while True:
-      pass
-     
-  def mensagem(msg):
-    #atribuindo ultimas atualizações feitas por usuários ("mensagens encaminhadas para o bot")
-      updates = bot.getUpdates(-1)
-    #atribuindo Id do usuário a uma variável
-      chatId = updates[0]['message']['chat']['id']
-    #atribuindo nome de usuário a uma variável
-      username = updates[0]['message']['chat']['username']
-    #mandando mensagem de boas vindas ao usuário
-      if(msg['text'] == "/start"):
-        bot.sendMessage(chatId,'''Olá, %s sou o FAQtec\n     
- Posso esclarecer dúvidas frequentes referente a faculdade\n
- Para escolher alguma opção selecione um botão''' %username,
-      reply_markup=ReplyKeyboardMarkup(
-          keyboard=[
-            [KeyboardButton (text="Como ser aluno"),KeyboardButton (text="Cursos"),KeyboardButton (text="Professores")]
-                   ]
-      ))
+	def init():
 
-      if(msg['text'] == 'Cursos'):
-#Abre o arquivo Hello.md com o atributo leitura
-        txtHelp = open('Hello.md','r')
-  
-  #Ler arquivos de outras pasta EX.: ComoSerAluno/Vestibular.md
-  
-#Envia mensagem com o conteúdo do arquivo Help.txt
-        bot.sendMessage(chatId,txtHelp.read(),'Markdown')
-#Fecha o arquivo
-        txtHelp.close()
+		while True:	#inicia o programa e deixa em execução
+			pass
 
-#Quando alguma mensagem é enviada do telegram
-#O metodo message_loop chama a função mensagem passando o que foi enviado do telegram como parametro para função        
-  bot.message_loop(mensagem)
+	def mensagem(msg):
+		updates = bot.getUpdates(-1)
+
+		chatId = updates[0]['message']['chat']['id']	#atribuindo Id do usuário a uma variável
+
+		try:
+			username = updates[0]['message']['chat']['username']	#atribuindo nome de usuário a uma variável
+		except KeyError:
+			username = 'true'
+
+		if (type (username) != 'true'):	#tratativa para usuários que não possuem username
+			username = 'amigo'
+
+		if(msg['text'] == "/start"):	#mandando mensagem de boas vindas ao usuário
+			bot.sendMessage(	chatId,
+								'''Olá, %s sou o FAQtec\n
+								Posso esclarecer dúvidas frequentes referente a faculdade\n
+ 								Para escolher alguma opção selecione um botão''' %username,
+								reply_markup=ReplyKeyboardMarkup(
+    								keyboard=[
+                						[KeyboardButton(text="Cursos"), KeyboardButton(text="Como ser Aluno"), KeyboardButton(text="Como Chegar")]
+    								]
+								)
+							)
+
+		if(msg['text'] == 'Cursos'):
+			txtHelp = open('Hello.md','r')	#Abre o arquivo Hello.md com o atributo leitura
+			bot.sendMessage(chatId,txtHelp.read(),'Markdown')	#Envia mensagem com o conteúdo do arquivo Help.txt
+			txtHelp.close()	#Fecha o arquivo
+            					#Ler arquivos de outras pasta EX.: ComoSerAluno/Vestibular.md
+
+		elif (msg['text'] == 'Como Chegar'):
+			BtnComoChegar = BtnComoChegar(bot, chatId, msg)
+			BtnComoChegar.run()
+			bot.sendMessage(chatId, "carlos")
+
+	bot.message_loop(mensagem)	#Quando alguma mensagem é enviada do telegram
+					            #O metodo message_loop chama a função mensagem passando o que foi enviado do telegram como parametro para função
