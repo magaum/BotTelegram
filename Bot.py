@@ -1,10 +1,16 @@
 import telepot
+import json
 from ComoChegar.BtnComoChegar import BtnComoChegar
 
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 
+#carregando token do bot
+
+load = open("token.json")
+token = json.loads(load.read())
+
 #atribuindo token ao Bot
-bot = telepot.Bot("444778927:AAEIM7sIL9PM5hfl-VtqQAQaqj2-BwujQ68")
+bot = telepot.Bot(token['token'])
 
 class Bot():
 	def init():
