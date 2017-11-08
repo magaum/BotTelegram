@@ -29,12 +29,6 @@ class Bot():
 		try:
 			username = updates[0]['message']['chat']['username']	#atribuindo nome de usuário a uma variável
 		except KeyError:
-<<<<<<< HEAD
-=======
-			username = 'true'
-
-		if (type (username) == 'true'):	#tratativa para usuários que não possuem username
->>>>>>> 36f45ec39d8a851776618c6724c4dbb9b1834b6e
 			username = 'amigo'
 
 		if(msg['text'] == "/start"):	#mandando mensagem de boas vindas ao usuário
