@@ -33,7 +33,7 @@ class Bot():
 		except KeyError:
 			username = 'true'
 
-		if (type (username) != 'true'):	#tratativa para usuários que não possuem username
+		if (type (username) == 'true'):	#tratativa para usuários que não possuem username
 			username = 'amigo'
 
 		if(msg['text'] == "/start"):	#mandando mensagem de boas vindas ao usuário
