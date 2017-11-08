@@ -1,16 +1,10 @@
 import telepot
-import json
 from ComoChegar.BtnComoChegar import BtnComoChegar
 
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 
-#carregando token do bot
-
-load = open("token.json")
-token = json.loads(load.read())
-
 #atribuindo token ao Bot
-bot = telepot.Bot(token['token'])
+bot = telepot.Bot("444778927:AAEIM7sIL9PM5hfl-VtqQAQaqj2-BwujQ68")
 
 class Bot():
 	def init():
@@ -26,9 +20,6 @@ class Bot():
 		try:
 			username = updates[0]['message']['chat']['username']	#atribuindo nome de usuário a uma variável
 		except KeyError:
-			username = 'true'
-
-		if (type (username) != 'true'):	#tratativa para usuários que não possuem username
 			username = 'amigo'
 
 		if(msg['text'] == "/start"):	#mandando mensagem de boas vindas ao usuário
