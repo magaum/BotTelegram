@@ -1,11 +1,6 @@
 import telepot
-<<<<<<< HEAD
-=======
 import json
-
->>>>>>> 36f45ec39d8a851776618c6724c4dbb9b1834b6e
 from ComoChegar.BtnComoChegar import BtnComoChegar
-
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 #carregando token do bot
 
