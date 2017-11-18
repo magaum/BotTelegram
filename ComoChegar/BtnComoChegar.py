@@ -17,13 +17,13 @@ class BtnComoChegar():
 		txtHelp = open('ComoChegar/Textos/txt01.md','r')	#Abre o arquivo Hello.md com o atributo leitura
 
 		self.bot.sendMessage(	self.chatId,
-							txtHelp.read(),'Markdown',
-							reply_markup=ReplyKeyboardMarkup(
-								keyboard=[
-									[KeyboardButton(text="Fatec no Mapa"), KeyboardButton(text="Imagens"), KeyboardButton(text="Regulamento Interno")]
-								]
+								txtHelp.read(),'Markdown',
+								reply_markup=ReplyKeyboardMarkup(
+									keyboard=[
+										[KeyboardButton(text="Fatec no Mapa"), KeyboardButton(text="Imagens"), KeyboardButton(text="Regulamento Interno")]
+									]
+								)
 							)
-						)
 
 		txtHelp.close()	#Fecha o arquivo
 
