@@ -1,1 +1,2 @@
-Endereço: Avenida Cesare Mansueto Giulio Lattes, 1350 - Eugênio de Melo, São José dos Campos - SP, 12247-014
+*Como chegar na FATEC:*
+Forma de chegar na FATEC, linhas de onibus e caronas
